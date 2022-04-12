@@ -1,0 +1,11 @@
+Exercise 8: Examine all the transactions for the sku with the greatest standard deviation in
+sprice, but only consider skus that are part of more than 100 transactions.
+
+SELECT s.brand,
+       t.sku,
+       STDDEV_POP(sprice) AS std_price,
+       COUNT(DISTINCT trannum) AS tran_num 
+FROM trnsact t JOIN skuinfo s ON t.sku = s.sku
+GROUP BY t.sku, s.brand
+HAVING tran_num > 100
+ORDER BY std_price DESC;
