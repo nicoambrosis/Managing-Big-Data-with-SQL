@@ -2,6 +2,16 @@ Exercise 4. What is the average daily revenue for each store/month/year combinat
 the database? Calculate this by dividing the total revenue for a group by the number of
 sales days available in the transaction table for that group.  
 
+
+/*----------------------Exercise 2-------------------------
+Determine which sku had the greatest total sales during the
+combined summer months of June, July and August.
+----------------------------------------------------------*/
+
+
+
+
+
 SELECT EXTRACT(YEAR from saledate)||EXTRACT(MONTH from saledate)||store AS year_month_sotre,
        SUM(amt)/COUNT(DISTINCT saledate) AS daily_revenue 
 FROM trnsact
