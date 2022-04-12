@@ -10,3 +10,11 @@ Yo can find some exersices [here](https://github.com/nicoambrosis/Managing-Bid-D
 ---
 The [Dillard's](https://www.dillards.com/) database is accesible throw Teradata and excersices are done using the web based platform for [Teradata](https://www.teradata.com/). 
 
+
+---
+### Acquired skills
+Data Analysis, SQL, MySQL, TERADATA
+
+---
+### Certificate
+
