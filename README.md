@@ -17,4 +17,7 @@ Data Analysis, SQL, MySQL, TERADATA
 
 ---
 ### Certificate
+<p align="center">
+  <img src="https://github.com/nicoambrosis/Managing-Bid-Data-with-SQL/blob/main/Certificate.pdf">
+</p>
 
