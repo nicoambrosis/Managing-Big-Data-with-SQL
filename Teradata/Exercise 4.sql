@@ -1,6 +1,6 @@
-Exercise 4. What is the average daily revenue for each store/month/year combination in
+/* Exercise 4. What is the average daily revenue for each store/month/year combination in
 the database? Calculate this by dividing the total revenue for a group by the number of
-sales days available in the transaction table for that group.  
+sales days available in the transaction table for that group. */  
 
 
 /*----------------------Exercise 2-------------------------
