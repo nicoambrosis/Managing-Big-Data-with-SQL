@@ -3,6 +3,16 @@ Material from the ¨Managing Big Data with SQL¨ course from Duke University
 
 The Coursera Specialization, "Managing Big Data with MySQL" consists of a 5-week course to learn SQL (MySQL and TERADATA) to interact with complex databases to find relationships between data and create value for business . Two real databases donated by the companies [Dognition](https://www.dognition.com/) and [Dillard's](https://www.dillards.com/) are used to learn from basic to advanced SQL concepts. 
 
+
+
+<p align="left"> 
+  <a href="https://www.teradata.com/" target="_blank" rel="noreferrer"> <img src="https://github.com/nicoambrosis/Managing-Big-Data-with-SQL/blob/main/Teradata/Teradata_logo_2018.png" alt="teradata" width="180" height="70"/> </a>
+  <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="70" height="70"/> </a>
+<a href="https://jupyter.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/jupyter/jupyter-original-wordmark.svg" alt="jupyter" width="70" height="70"/> </a>
+  
+</p>
+
+
 ---
 The [Dognition](https://www.dognition.com/) database has hundred of thousands of rows is accesible throw mySQL. Exersices were done using Jupyter notebooks. 
 You can find some exersices [here](https://github.com/nicoambrosis/Managing-Bid-Data-with-SQL/tree/main/MySQL). 
