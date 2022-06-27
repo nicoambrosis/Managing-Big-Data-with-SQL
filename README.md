@@ -23,6 +23,73 @@ You can find some exersices [here](https://github.com/nicoambrosis/Managing-Bid-
 ---
 The [Dillard's](https://www.dillards.com/) database has more than 120 million rows and is accesible throw Teradata. Excersices were done using the web based platform for [Teradata](https://www.teradata.com/). 
 
+---
+## Queries
+Some examples of what I have done in this course.<br>
+[Example #1](https://github.com/nicoambrosis/Managing-Big-Data-with-SQL/blob/main/MySQL/MySQL_Exercise_12_Queries_that_Test_Relationships_Between_Test_Completion_and_Testing_Circumstances.ipynb)
+```sql
+SELECT DATE_SUB(c.created_at,INTERVAL 6 HOUR) AS corrected_time,
+    YEAR(DATE_SUB(c.created_at,INTERVAL 6 HOUR)) AS year,
+    DAYOFWEEK(DATE_SUB(c.created_at,INTERVAL 6 HOUR)) AS dayasnum,
+    COUNT(c.created_at) AS numtests,
+    (CASE
+    WHEN DAYOFWEEK(c.created_at)=1 THEN "Su"
+    WHEN DAYOFWEEK(c.created_at)=2 THEN "Mo"
+    WHEN DAYOFWEEK(c.created_at)=3 THEN "Tu"
+    WHEN DAYOFWEEK(c.created_at)=4 THEN "We"
+    WHEN DAYOFWEEK(c.created_at)=5 THEN "Th"
+    WHEN DAYOFWEEK(c.created_at)=6 THEN "Fr"
+    WHEN DAYOFWEEK(c.created_at)=7 THEN "Sa"
+    END) AS daylabel
+
+FROM complete_tests c JOIN (SELECT DISTINCT dog_guid
+                            FROM dogs d JOIN users u ON d.user_guid=u.user_guid 
+                            WHERE ((u.exclude IS NULL OR u.exclude=0) AND
+                                   (d.exclude IS NULL OR d.exclude=0) AND
+                                  (u.country='US') AND
+                                  (u.state NOT IN ('HI','AK')))) AS dogs_cleaned
+ON c.dog_guid=dogs_cleaned.dog_guid
+GROUP BY year, dayasnum
+ORDER BY year, FIELD(dayasnum, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')
+;
+```
+<br>
+
+[Example #2](https://github.com/nicoambrosis/Managing-Big-Data-with-SQL/blob/main/MySQL/MySQL_Exercise_11_Queries_that_Test_Relationships_Between_Test_Completion_and_Dog_Characteristics.ipynb)
+
+```sql
+SELECT breed_group,
+        AVG(numtests_per_dog.numtests) AS avg_tests_completed,
+        COUNT(DISTINCT dogID)
+
+FROM(SELECT d.dog_guid AS dogID,
+         d.breed_group AS breed_group,
+         count(c.created_at) AS numtests
+     FROM dogs d JOIN complete_tests c ON d.dog_guid=c.dog_guid
+     WHERE d.exclude IS NULL OR d.exclude=0             
+    GROUP BY dogID) AS numtests_per_dog
+GROUP BY breed_group
+HAVING breed_group IN ('Sporting', 'Hound', 'Herding','Working');
+```
+<br>
+
+[Example #3](https://github.com/nicoambrosis/Managing-Big-Data-with-SQL/blob/main/MySQL/MySQL_Exercise_07_Inner_Joins.ipynb)
+```sql
+SELECT 
+d.dog_guid AS DogID,
+d.user_guid AS UerID,
+AVG(r.rating) AS AvgRating,
+COUNT(r.rating) AS NumRatings,
+d.breed,
+d.breed_group,
+d.breed_type
+FROM dogs d, reviews r
+WHERE d.dog_guid = r.dog_guid AND d.user_guid = r.user_guid
+GROUP BY d.user_guid, d.dog_guid, d.breed, d.breed_group, d.breed_type
+HAVING NumRatings >= 10
+ORDER BY AvgRating DESC
+LIMIT 200;
+```
 
 
 ## Acquired skills
