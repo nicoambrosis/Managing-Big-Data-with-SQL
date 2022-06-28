@@ -1,0 +1,7 @@
+Exercise 7: What is the brand of the sku with the greatest standard deviation in sprice?
+Only examine skus that have been part of over 100 transactions.
+
+SELECT s.brand, t.sku, STDDEV_POP(sprice) AS std_price 
+FROM trnsact t JOIN skuinfo s ON t.sku = s.sku
+GROUP BY t.sku, s.brand
+ORDER BY std_price DESC;
