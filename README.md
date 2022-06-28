@@ -90,6 +90,36 @@ HAVING NumRatings >= 10
 ORDER BY AvgRating DESC
 LIMIT 200;
 ```
+[Example 4](https://github.com/nicoambrosis/Managing-Big-Data-with-SQL/blob/main/MySQL/MySQL_Exercise_11_Queries_that_Test_Relationships_Between_Test_Completion_and_Dog_Characteristics.ipynb)
+
+```sql
+SELECT numtests_per_dog.pure_breed AS pure_breed,
+        AVG(numtests_per_dog.numtests) AS avg_tests_completed, COUNT(DISTINCT dogID)
+FROM( SELECT d.dog_guid AS dogID, d.breed_type AS breed_type,
+    CASE WHEN d.breed_type='Pure Breed' THEN 'pure_breed'
+    ELSE 'not_pure_breed'
+    END AS pure_breed,
+    count(c.created_at) AS numtests
+    FROM dogs d JOIN complete_tests c
+    ON d.dog_guid=c.dog_guid
+    WHERE d.exclude IS NULL OR d.exclude=0
+    GROUP BY dogID) AS numtests_per_dog
+GROUP BY pure_breed;
+```
+
+
+## Relational Schemas
+[Example 1](https://github.com/nicoambrosis/Managing-Big-Data-with-SQL/blob/main/Teradata/Entity-Relationship%20Diagram%20Exercises/3.png)
+
+<p align="center">
+  <img src="https://github.com/nicoambrosis/Managing-Big-Data-with-SQL/blob/main/Teradata/Entity-Relationship%20Diagram%20Exercises/3.png", width = 75%>
+</p>
+
+[Example 2](https://github.com/nicoambrosis/Managing-Big-Data-with-SQL/blob/main/Teradata/Entity-Relationship%20Diagram%20Exercises/4.png)
+
+<p align="center">
+  <img src="https://github.com/nicoambrosis/Managing-Big-Data-with-SQL/blob/main/Teradata/Entity-Relationship%20Diagram%20Exercises/4.png", width = 75%>
+</p>
 
 
 ## Acquired skills
