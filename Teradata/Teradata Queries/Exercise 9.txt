@@ -1,8 +1,7 @@
 Exercise 9: What was the average daily revenue Dillard’s brought in during each month of
 the year?
 
-```
-sql
+```sql
 SELECT 
        EXTRACT(MONTH from saledate) AS months,
        SUM(amt)/COUNT(DISTINCT saledate) AS daily_revenue 
